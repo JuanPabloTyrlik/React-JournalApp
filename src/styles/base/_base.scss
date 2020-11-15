@@ -31,3 +31,18 @@ main {
 .pointer {
     cursor: pointer;
 }
+
+.disabled {
+    cursor: not-allowed !important;
+    
+    &:active {
+        pointer-events: none;
+    }
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
