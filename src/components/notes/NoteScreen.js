@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { activeNote } from '../../actions/notes';
+import { useForm } from '../../hooks/useForm';
 import { NotesAppBar } from './NotesAppBar';
 
 export const NoteScreen = () => {
+    const dispatch = useDispatch();
+    const { active: note } = useSelector((state) => state.notes);
+    const [formValues, handleChange, reset] = useForm(note);
+    const { title, body, imageUrl } = formValues;
+
+    const activeId = useRef(note.id);
+
+    useEffect(() => {
+        if (activeId.current !== note.id) {
+            activeId.current = note.id;
+            reset(note);
+        }
+    }, [note, reset]);
+
+    useEffect(() => {
+        dispatch(activeNote(formValues.id, { ...formValues }));
+    }, [dispatch, formValues]);
+
     return (
         <div className="notes__main-content">
             <NotesAppBar />
@@ -12,21 +33,24 @@ export const NoteScreen = () => {
                     id="title"
                     placeholder="Some awesome title"
                     className="notes__title-input"
+                    value={title}
+                    onChange={handleChange}
                 />
                 <textarea
-                    name="text-area"
+                    name="body"
                     id="text-area"
                     cols="20"
                     rows="5"
                     placeholder="What happened today?"
                     className="notes__text-area"
+                    value={body}
+                    onChange={handleChange}
                 ></textarea>
-                <div className="notes__image">
-                    <img
-                        src="https://www.w3schools.com/w3css/img_forest.jpg"
-                        alt="forest"
-                    />
-                </div>
+                {note.imageUrl && (
+                    <div className="notes__image">
+                        <img src={imageUrl} alt="forest" />
+                    </div>
+                )}
             </div>
         </div>
     );
