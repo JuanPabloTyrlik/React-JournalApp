@@ -11,10 +11,15 @@ export const NoteScreen = () => {
     const { title, body, imageUrl } = formValues;
 
     const activeId = useRef(note.id);
+    const activeUrl = useRef(note.imageUrl);
 
     useEffect(() => {
-        if (activeId.current !== note.id) {
+        if (
+            activeId.current !== note.id ||
+            activeUrl.current !== note.imageUrl
+        ) {
             activeId.current = note.id;
+            activeUrl.current = note.imageUrl;
             reset(note);
         }
     }, [note, reset]);
@@ -46,9 +51,9 @@ export const NoteScreen = () => {
                     value={body}
                     onChange={handleChange}
                 ></textarea>
-                {note.imageUrl && (
+                {formValues.imageUrl && (
                     <div className="notes__image">
-                        <img src={imageUrl} alt="forest" />
+                        <img src={imageUrl} alt="image" />
                     </div>
                 )}
             </div>
