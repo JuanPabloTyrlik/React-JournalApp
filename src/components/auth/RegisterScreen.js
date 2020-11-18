@@ -9,10 +9,10 @@ import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
     const [values, handleChange] = useForm({
-        name: 'Juan',
-        email: 'juan@gmail.com',
-        password: '123456',
-        confirmPassword: '123456',
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
     });
 
     const { name, email, password, confirmPassword } = values;
@@ -55,7 +55,7 @@ export const RegisterScreen = () => {
     };
 
     return (
-        <>
+        <div className="animate__animated animate__fadeIn animate__faster">
             <h1 className="auth__title">Register</h1>
             {ui.msgError && (
                 <Alert severity="error" style={{ marginBottom: '1rem' }}>
@@ -118,6 +118,6 @@ export const RegisterScreen = () => {
                     </Link>
                 </div>
             </form>
-        </>
+        </div>
     );
 };

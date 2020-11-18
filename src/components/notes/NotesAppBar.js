@@ -1,7 +1,11 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { startSaveNote, startUploading } from '../../actions/notes';
+import {
+    startDeleteNote,
+    startSaveNote,
+    startUploading,
+} from '../../actions/notes';
 
 export const NotesAppBar = () => {
     const { active: note } = useSelector((state) => state.notes);
@@ -13,7 +17,7 @@ export const NotesAppBar = () => {
         dispatch(startSaveNote());
     };
 
-    const handleUpload = (e) => {
+    const handleUpload = () => {
         input.current.click();
     };
 
@@ -23,6 +27,10 @@ export const NotesAppBar = () => {
             dispatch(startUploading(file));
             input.current.value = '';
         }
+    };
+
+    const handleDelete = () => {
+        dispatch(startDeleteNote());
     };
 
     return (
@@ -39,10 +47,16 @@ export const NotesAppBar = () => {
             />
             <div>
                 <button className="btn" onClick={handleUpload}>
-                    Picture
+                    <i className="fas fa-cloud-upload-alt"></i>
+                    {'  Picture'}
                 </button>
                 <button className="btn" onClick={handleSave}>
-                    Save
+                    <i className="fas fa-save"></i>
+                    {'  Save'}
+                </button>
+                <button className="btn btn-danger" onClick={handleDelete}>
+                    <i className="fas fa-trash"></i>
+                    {'  Delete'}
                 </button>
             </div>
         </div>

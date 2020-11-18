@@ -53,7 +53,7 @@ export const NoteScreen = () => {
                 ></textarea>
                 {formValues.imageUrl && (
                     <div className="notes__image">
-                        <img src={imageUrl} alt="image" />
+                        <img src={imageUrl} alt="noteimage" />
                     </div>
                 )}
             </div>

@@ -12,8 +12,8 @@ export const LoginScreen = () => {
     const ui = useSelector((state) => state.ui);
 
     const [formValues, handleInputChange] = useForm({
-        email: 'juan@gmail.com',
-        password: '123456',
+        email: '',
+        password: '',
     });
 
     const { email, password } = formValues;
@@ -50,7 +50,7 @@ export const LoginScreen = () => {
     };
 
     return (
-        <>
+        <div className="animate__animated animate__fadeIn animate__faster">
             <h1 className="auth__title">Login</h1>
             {ui.msgError && (
                 <Alert severity="error" style={{ marginBottom: '1rem' }}>
@@ -111,6 +111,6 @@ export const LoginScreen = () => {
                     Create new account
                 </Link>
             </form>
-        </>
+        </div>
     );
 };

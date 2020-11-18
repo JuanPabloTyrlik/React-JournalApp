@@ -1,5 +1,6 @@
 import { firebase, googleAuthProvider } from '../firebase/config';
 import { TYPES } from '../types/types';
+import { cleanNotes } from './notes';
 import { finishLoading, setError, startLoading } from './ui';
 
 export const startLoginEmailPassword = (email, password) => (dispatch) => {
@@ -71,5 +72,9 @@ export const logout = () => {
 };
 
 export const startLogout = () => (dispatch) => {
-    firebase.auth().signOut().then(dispatch(logout));
+    firebase
+        .auth()
+        .signOut()
+        .then(dispatch(cleanNotes()))
+        .then(dispatch(logout()));
 };
