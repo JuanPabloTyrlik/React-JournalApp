@@ -4,7 +4,7 @@ import { TYPES } from '../types/types';
 import Swal from 'sweetalert2';
 import { fileUpload } from '../helpers/fileUpload';
 
-export const startNewEntry = () => (dispatch, getState) => {
+export const startNewEntry = () => async (dispatch, getState) => {
     const {
         auth: { uid },
     } = getState();
@@ -16,7 +16,8 @@ export const startNewEntry = () => (dispatch, getState) => {
         date: new Date().getTime(),
     };
 
-    db.collection(`${uid}/journal/notes`)
+    await db
+        .collection(`${uid}/journal/notes`)
         .add(newNote)
         .then((doc) => dispatch(newEntry(doc.id, newNote)));
 };
