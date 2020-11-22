@@ -6,33 +6,19 @@ import 'firebase/auth';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: 'AIzaSyAX7GQqS1Z6mOcN5L1gAifnvZUITkE0hJM',
-    authDomain: 'jp-journal-app.firebaseapp.com',
-    databaseURL: 'https://jp-journal-app.firebaseio.com',
-    projectId: 'jp-journal-app',
-    storageBucket: 'jp-journal-app.appspot.com',
-    messagingSenderId: '586274830622',
-    appId: '1:586274830622:web:e473d05867c1939369310f',
-    measurementId: 'G-S51BEEMS8H',
+    apiKey: process.env.REACT_APP_FIRESTORE_APIKEY,
+    authDomain: process.env.REACT_APP_FIRESTORE_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_FIRESTORE_DATABASEURL,
+    projectId: process.env.REACT_APP_FIRESTORE_PROJECTID,
+    storageBucket: process.env.REACT_APP_FIRESTORE_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_FIRESTORE_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_FIRESTORE_APPID,
+    measurementId: process.env.REACT_APP_FIRESTORE_MEASUREMENTID,
 };
 
-const firebaseConfigTesting = {
-    apiKey: 'AIzaSyAM26yWNiGd13KhKS6Qqd53MJssVseipA8',
-    authDomain: 'sql-demos-7e4c0.firebaseapp.com',
-    databaseURL: 'https://sql-demos-7e4c0.firebaseio.com',
-    projectId: 'sql-demos-7e4c0',
-    storageBucket: 'sql-demos-7e4c0.appspot.com',
-    messagingSenderId: '713305350269',
-    appId: '1:713305350269:web:0a61127770c832946d9114',
-};
+if (!firebaseConfig.measurementId) delete firebaseConfig.measurementId;
 
-if (process.env.NODE_ENV === 'test') {
-    firebase.initializeApp(firebaseConfigTesting);
-} else {
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-}
-
+firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
 const db = firebase.firestore();
