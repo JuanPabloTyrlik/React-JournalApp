@@ -54,14 +54,15 @@ export const setNotes = (notes) => {
     };
 };
 
-export const startSaveNote = () => (dispatch, getState) => {
+export const startSaveNote = () => async (dispatch, getState) => {
     const {
         auth: { uid },
         notes: { active: note },
     } = getState();
     const noteToFirestore = { ...note };
     delete noteToFirestore.id;
-    db.doc(`${uid}/journal/notes/${note.id}`)
+    await db
+        .doc(`${uid}/journal/notes/${note.id}`)
         .update(noteToFirestore)
         .then(() => {
             dispatch(refreshNote(note.id, noteToFirestore));
