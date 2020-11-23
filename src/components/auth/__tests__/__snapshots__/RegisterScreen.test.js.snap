@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests on <RegisterScreen /> should render correctly 1`] = `
+<div
+  className="animate__animated animate__fadeIn animate__faster"
+>
+  <h1
+    className="auth__title"
+  >
+    Register
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      autoComplete="off"
+      className="auth__input"
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Name"
+      type="text"
+      value=""
+    />
+    <input
+      autoComplete="off"
+      className="auth__input"
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      type="text"
+      value=""
+    />
+    <input
+      className="auth__input"
+      id="password"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value=""
+    />
+    <input
+      className="auth__input"
+      id="confirmPassword"
+      name="confirmPassword"
+      onChange={[Function]}
+      placeholder="Confirm Password"
+      type="password"
+      value=""
+    />
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      type="submit"
+    >
+      Create account
+    </button>
+    <div
+      className="mt-1"
+    >
+      <a
+        className="link"
+        href="/auth/login"
+        onClick={[Function]}
+      >
+        Already have an account?
+      </a>
+    </div>
+  </form>
+</div>
+`;

@@ -5,7 +5,7 @@ import { finishLoading, setError, startLoading } from './ui';
 
 export const startLoginEmailPassword = (email, password) => (dispatch) => {
     dispatch(startLoading());
-    firebase
+    return firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(({ user }) => {
@@ -42,7 +42,7 @@ export const startRegisterWithEmailPasswordName = (
 
 export const startGoogleLogin = () => (dispatch) => {
     dispatch(startLoading());
-    firebase
+    return firebase
         .auth()
         .signInWithPopup(googleAuthProvider)
         .then(({ user: { displayName, uid } }) =>
