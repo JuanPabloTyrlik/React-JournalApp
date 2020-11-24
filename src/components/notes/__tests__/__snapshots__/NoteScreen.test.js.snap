@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests on NoteScreen should render correctly 1`] = `
+<div
+  className="notes__main-content"
+>
+  <div
+    className="notes__app-bar"
+  >
+    <span>
+      November 18th 2020
+    </span>
+    <input
+      accept="image/*"
+      id="picture"
+      name="picture"
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div>
+      <button
+        className="btn"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-cloud-upload-alt"
+        />
+          Picture
+      </button>
+      <button
+        className="btn"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-save"
+        />
+          Save
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-trash"
+        />
+          Delete
+      </button>
+    </div>
+  </div>
+  <div
+    className="notes__content"
+  >
+    <input
+      className="notes__title-input"
+      id="title"
+      name="title"
+      onChange={[Function]}
+      placeholder="Some awesome title"
+      type="text"
+      value="New Note"
+    />
+    <textarea
+      className="notes__text-area"
+      cols="20"
+      id="text-area"
+      name="body"
+      onChange={[Function]}
+      placeholder="What happened today?"
+      rows="5"
+      value="Dummy Text"
+    />
+    <div
+      className="notes__image"
+    >
+      <img
+        alt="noteimage"
+        src="https://res.cloudinary.com/dxd81c3e7/image/upload/v1606084697/h2iks4zr4bjcxtj13k6g.png"
+      />
+    </div>
+  </div>
+</div>
+`;
